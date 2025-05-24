@@ -1,0 +1,16 @@
+{
+  "name": "discord-bot-project",
+  "version": "1.0.0",
+  "description": "A simple Discord bot project using discord.js",
+  "main": "src/bot.js",
+  "scripts": {
+    "start": "node src/bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.5.0"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "keywords": []
+}

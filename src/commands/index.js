@@ -1,0 +1,254 @@
+const { Message } = require('discord.js');
+
+const pictosDB = [
+    { name: "Affaiblissement Amélioré", description: "+15 % à la réduction de dégâts infligée par Affaiblissement.", cost: "15", location: "Tour Éternelle" },
+    { name: "Affinité Brûlante", description: "Dégâts augmentés de 25 % contre les cibles affectées par Brûlure.", cost: "10", location: "Cœur Ardent" },
+    { name: "Affinité Inversée", description: "Applique Inversion sur soi-même pendant 3 tours au début du combat. Dégâts augmentés de 50 % en état d'Inversion.", cost: "5", location: "Terres Oubliées" },
+    { name: "Altéré", description: "Dégâts augmentés de 15 % par altération sur le personnage.", cost: "3", location: "Falaises de Rochevague, L'Aspirante" },
+    { name: "Anti Brûlure", description: "Immunité contre brûlure.", cost: "15", location: "Cœur Ardent, Manoir suspendu" },
+    { name: "Anti-Charme", description: "Immunité contre charme.", cost: "10", location: "Sirène" },
+    { name: "Anti-Corruption", description: "Immunité contre corruption.", cost: "10", location: "L'Aspirante" },
+    { name: "Anti Étourdissement", description: "Immunité contre étourdissement.", cost: "5", location: "Continent" },
+    { name: "Anti-Gel", description: "Immunité contre gel.", cost: "15", location: "Cœur Ardent" },
+    { name: "Assurance", description: "Subit 50% de dégâts en moins mais ne peut pas recevoir de soins.", cost: "20", location: "Continent, Falaises de Rochevague" },
+    { name: "Attaque Accrue", description: "Chaque fois que le personnage inflige des dégâts, il tente de consommer 1 PA. S'il y parvient, les dégâts sont augmentés de 20 %.", cost: "10", location: "Visages" },
+    { name: "Attaque Affaiblissante", description: "Les attaques de base infligent Affaiblissement pendant 1 tour.", cost: "10", location: "Monolith" },
+    { name: "Attaque Améliorée", description: "Dégâts d'attaque de base augmentés de 50 %.", cost: "7", location: "Vallons Fleuris" },
+    { name: "Attaque Combo I", description: "L'attaque de base permet de porter 1 coup supplémentaire.", cost: "10", location: "Terres Oubliées" },
+    { name: "Attaque Combo II", description: "L'attaque de base permet de porter 1 coup supplémentaire.", cost: "20", location: "Intérieur du Monolith - Clair-Obscur Chromatique" },
+    { name: "Attaque Combo III", description: "L'attaque de base permet de porter 1 coup supplémentaire.", cost: "30", location: "Arène clandestine des Gestrals" },
+    { name: "Attaque Fracturante", description: "Dégâts de Fracture augmentés de 50 % lors des attaques de base.", cost: "1", location: "Océan Suspendu, Intérieur du Monolith" },
+    { name: "Attaque Fragilisante", description: "Les attaques de base infligent Vulnérabilité pendant 1 tour.", cost: "10", location: "Monolith" },
+    { name: "Attaque Protectrice", description: "Les attaques de base confèrent Carapace pendant 1 tour.", cost: "10", location: "Sanctuaire de la Nuit Éternelle" },
+    { name: "Attaque Renforçante", description: "Les attaques de base confèrent Surpuissance pendant 1 tour.", cost: "10", location: "Vallons Fleuris, Fleuve Sacré" },
+    { name: "Au cœur de l'action", description: "+3 boucliers au début du combat, mais le maximum de santé est réduit de moitié.", cost: "10", location: "Rives Obscures" },
+    { name: "Au seuil de la mort", description: "Inflige 50% de dégâts en plus si la santé est en dessous de 10%", cost: "5", location: "L’Atelier" },
+    { name: "Bombe Funèbre", description: "Inflige des dégâts à tous les ennemis en mourant", cost: "5", location: "Continent" },
+    { name: "Bouclier Basique", description: "+1 bouclier si le personnage n'a aucun bouclier au début du tour.", cost: "20", location: "Croisée des chemins" },
+    { name: "Bouclier Surpuissant", description: "Dégâts augmentés de 10 % par point de bouclier sur le personnage.", cost: "5", location: "Sanctuaire de la Nuit Éternelle" },
+    { name: "Boucliers Affinés", description: "Dégâts augmentés de 30 % tant que le personnage a des boucliers. Mais tous ses boucliers sont perdus au moindre coup subi.", cost: "15", location: "Fleuve Sacré" },
+    { name: "Brûlure Énergisante", description: "+1 PA en appliquant Brûlure. Une fois par tour.", cost: "10", location: "Cœur Ardent" },
+    { name: "Brûlure Fracturante", description: "Dégâts de Fracture augmentés de 25 % contre les ennemis affectés par Brûlure.", cost: "5", location: "Continent" },
+    { name: "Brûlure Prolongée", description: "La durée de Brûlure augmente de 2 tours.", cost: "15", location: "Manoir Suspendu" },
+    { name: "Brûlures Critiques", description: "Chances de critique augmentées de 25 % contre les ennemis affectés par Brûlure.", cost: "5", location: "Vallons Fleuris, Sanctuaire de la Nuit Éternelle" },
+    { name: "Buff Curatif", description: "Récupère 15 % de santé en appliquant un buff.", cost: "10", location: "L'Aspirante" },
+    { name: "Canon de verre", description: "Inflige 25 % de dégâts en plus, mais les dégâts subis augmentent eux aussi de 25 %.", cost: "10", location: "Visages, Fleuve Sacré" },
+    { name: "Carapace Améliorée", description: "+10 % à la réduction de dégâts conférée par Carapace.", cost: "10", location: "Sirène" },
+    { name: "Carapace Immédiate", description: "Applique Carapace pendant 3 tours au début du combat.", cost: "10", location: "Falaises de Rochevague" },
+    { name: "Carapace Prolongée", description: "En appliquant Carapace, sa durée augmente de 2.", cost: "10", location: "Continent, L'Aspirante, Terres Oubliées" },
+    { name: "Carapace Surpuissante", description: "Applique également Surpuissance en appliquant Carapace.", cost: "10", location: "Continent, Sirènes" },
+    { name: "Charges sur Altération", description: "+10 % de charge Gradient en appliquant un buff. Une fois par tour.", cost: "10", location: "Manoir Suspendu" },
+    { name: "Charges sur Attaque", description: "+15 % de charge Gradient à chaque attaque de base.", cost: "7", location: "L’Aspirante" },
+    { name: "Charges sur Brûlure", description: "+20 % de charge Gradient en infligeant Brûlure à une cible. Une fois par tour.", cost: "10", location: "Esquisses de Renoir" },
+    { name: "Charges sur Contre", description: "+10 % de charge Gradient à chaque contre.", cost: "10", location: "L’Aspirante" },
+    { name: "Charges sur Critiques", description: "+20 % de charge Gradient en cas de coup critique. Une fois par tour.", cost: "10", location: "L'Aspirante" },
+    { name: "Charges sur Faiblesse", description: "+15 % de charge Gradient en touchant une faiblesse. Une fois par tour.", cost: "5", location: "L'Aspirante" },
+    { name: "Charges sur Étourdissement", description: "+5 % de charge Gradient en touchant un ennemi étourdi.", cost: "5", location: "Lumière Acte III" },
+    { name: "Charges sur Fracture", description: "Dégâts de Fracture des attaques Gradient augmentés de 50 %.", cost: "5", location: "Manoir Suspendu" },
+    { name: "Charges sur Marque", description: "+20 % de charge Gradient en touchant une cible marquée. Une fois par tour.", cost: "10", location: "Sanctuaire de la Nuit Éternelle" },
+    { name: "Contamination Bénéfique", description: "+2 PA en appliquant une altération. Une fois par tour.", cost: "15", location: "Feuilles Ambrées" },
+    { name: "Contre Amélioré I", description: "Dégâts de contre augmentés de 50 %.", cost: "3", location: "Continent, Manoir Suspendu, Esquisses de Renoir" },
+    { name: "Contre Amélioré II", description: "Dégâts de contre augmentés de 75 %.", cost: "5", location: "Visages - Ramasseur Chromatique" },
+    { name: "Contre Amélioré III", description: "Dégâts de contre augmentés de 100 %.", cost: "7", location: "Glacier Ardent" },
+    { name: "Contre Curatif", description: "Récupère 20% de santé à chaque contre.", cost: "10", location: "Vieille Lumière" },
+    { name: "Contre Fracturant", description: "Dégâts de Fracture augmentés de 50 % lors des contres.", cost: "3", location: "Falaises de Rochevague" },
+    { name: "Critiques sur Faiblesse", description: "Chances de critique augmentées de 25 % contre les ennemis affectés par Faiblesse.", cost: "5", location: "" },
+    { name: "Critiques sur Vulnérabilité", description: "Chances de critique augmentées de 25 % contre les ennemis affectés par Vulnérabilité.", cost: "5", location: "Continent" },
+    { name: "Danger Accélérant", description: "Gagne Rapidité en tombant sous 50% de santé", cost: "5", location: "Feuilles Ambrées" },
+    { name: "Danger Protecteur", description: "Gagne Carapace en tombant sous 50% de santé.", cost: "5", location: "Falaise de Rochevague" },
+    { name: "Danger Surpuissant", description: "Gagne Surpuissance en tombant sous 50% de santé.", cost: "5", location: "Falaises de Rochevague" },
+    { name: "Défense Aléatoire", description: "Les dégâts subis sont aléatoirement multipliés par une valeur comprise en 50% et 200%", cost: "5", location: "Intérieur du Monolithe" },
+    { name: "Dernier Rempart Accélérant", description: "Le personnage gagne Rapidité s'il se bat seul.", cost: "3", location: "Arène secrète des Gestrals" },
+    { name: "Dernier Rempart Critique", description: "100% de chances de critiques en combattant seul.", cost: "3", location: "Arène secrète des Gestrals" },
+    { name: "Dernier Rempart Protecteur", description: "Le personnage gagne Carapace s'il se bat seul.", cost: "3", location: "Arène secrète des Gestrals" },
+    { name: "Dernier Rempart Renforçant", description: "Le personnage gagne Surpuissance s'il se bat seul.", cost: "3", location: "Arène secrète des Gestrals" },
+    { name: "Double Brûlure", description: "+1 brûlure pour chaque brûlure infligée.", cost: "30", location: "Visages" },
+    { name: "Double Marque", description: "Les marques requièrent un coup de plus pour être retirées.", cost: "20", location: "Sirène" },
+    { name: "Échauffement", description: "Dégâts augmentés de 5 % par tour. Peut se cumuler jusqu'à 5 fois.", cost: "15", location: "Continent" },
+    { name: "Élimination Revigorante", description: "Récupère 50 % de santé en tuant un ennemi.", cost: "5", location: "Terres Oubliées, Esquisses de Renoir" },
+    { name: "Énergie - Attaque I", description: "+1 PA à chaque attaque de base.", cost: "10", location: "Continent, Esquisse de Renoir" },
+    { name: "Énergie - Attaque II", description: "+1 PA à chaque attaque de base.", cost: "15", location: "Sirène" },
+    { name: "Énergie - Carapace", description: "Confère 2PA en appliquant Carapace.", cost: "10", location: "Continent" },
+    { name: "Énergie - Départ I", description: "+1 PA au début du combat.", cost: "5", location: "Continent" },
+    { name: "Énergie - Départ II", description: "+1 PA au début du combat.", cost: "10", location: "Sanctuaire Ancien" },
+    { name: "Énergie - Départ III", description: "+1 PA au début du combat.", cost: "15", location: "Nid d'Esquie" },
+    { name: "Énergie - Départ IV", description: "+1 PA au début du combat.", cost: "20", location: "Terres Oubliées" },
+    { name: "Énergie - Faiblesse", description: "+1 PA en touchant une faiblesse. Une fois par tour.", cost: "3", location: "Intérieur du Monolith" },
+    { name: "Énergie - Parade", description: "+1 PA en cas de parade réussie.", cost: "15", location: "Fleuve Sacré, Esquisses de Renoir" },
+    { name: "Énergie - Rapidité", description: "Confère 2PA en appliquant Rapidité.", cost: "10", location: "L'Aspirante" },
+    { name: "Énergie - Surpuissance", description: "Confère 2PA en appliquant Surpuissance.", cost: "10", location: "Lumière Acte III" },
+    { name: "Énergie – Tour", description: "+1 PA au début du tour.", cost: "20", location: "Sirène, Fleuve Sacré, Esquisses de Renoir" },
+    { name: "Énergie de saut", description: "+1 PA à chaque contre sauté.", cost: "5", location: "Sanctuaire Ancien" },
+    { name: "Énergie Douloureuse", description: "Plus aucun gain de PA en cas de parade réussie, mais +1PA lorsque le personnage se fait toucher.", cost: "10", location: "Manoir Suspendu" },
+    { name: "Énergie Maitrisée", description: "+1 PA à chaque gain de PA.", cost: "40", location: "Continent" },
+    { name: "Énergie Mortelle I", description: "+3 PA en tuant un ennemi.", cost: "2", location: "Continent" },
+    { name: "Énergie Mortelle II", description: "+3 PA en tuant un ennemi.", cost: "2", location: "Vallons Fleuris" },
+    { name: "Esquive Renforçante", description: "Les dégâts augmentent de 5 % à chaque esquive successive réussie. Se cumule un maximum de 10 fois.", cost: "5", location: "Continent" },
+    { name: "Étourdissement critique", description: "100 % de chances de critique en frappant une cible étourdie.", cost: "5", location: "Fleuve Sacré" },
+    { name: "Etourdissement Curatif", description: "Récupère 5% de santé en frappant une cible étourdie.", cost: "10", location: "Lumière Acte III" },
+    { name: "Etourdissement Énergisant", description: "+1 PA en frappant une cible étourdie à l'aide d'une compétence.", cost: "10", location: "Manoir Suspendu" },
+    { name: "Etourdissement opportun", description: "Dégâts augmentés de 30 % contre les cibles étourdies.", cost: "10", location: "Fleuve Sacré" },
+    { name: "Feu Curatif", description: "Récupère 25% de santé en attaquant une cible en train de brûler. Une fois par tour.", cost: "10", location: "Sirène" },
+    { name: "Fracture Accélérante", description: "Rejoue en cas de fracture réussie.", cost: "3", location: "Sanctuaire de la Nuit Éternelle, L'Atelier" },
+    { name: "Fracture Améliorée", description: "Dégâts de Fracture augmentés de 25 %.", cost: "10", location: "Sanctuaire Ancien" },
+    { name: "Fracture Brûlante", description: "Applique 3 brûlures en fracturant un ennemi.", cost: "3", location: "Glacier Ardent" },
+    { name: "Fracture Critique", description: "Dégâts de fracture augmentés de 25 % en cas de coup critique.", cost: "5", location: "Continent" },
+    { name: "Fracture Embrasante", description: "Fracturer un ennemi double son nombre de brûlures.", cost: "5", location: "L'Aspirante, Tour Éternelle" },
+    { name: "Fracture Énergisante", description: "+3 PA en infligeant Fracture à un ennemi.", cost: "3", location: "Océan Suspendu" },
+    { name: "Fracture Fragilisante", description: "Applique Vulnérabilité en cas de fracture.", cost: "5", location: "" },
+    { name: "Fracture Gradient", description: "+50 % de charges gradient en infligeant fracture à une cible.", cost: "5", location: "Sanctuaire de la Nuit Éternelle" },
+    { name: "Fracture Marquante", description: "Applique Marque en cas de Fracture.", cost: "5", location: "Sanctuaire de la Nuit Éternelle" },
+    { name: "Fracture Ralentissante", description: "Applique Lenteur en cas de Fracture.", cost: "5", location: "Manoir Suspendu" },
+    { name: "Fracture Renforçante", description: "Gagne Surpuissance en Fracturant un ennemi.", cost: "3", location: "Manoir Suspendu" },
+    { name: "Fracture sur attaque", description: "Les attaques de base peuvent fracturer.", cost: "10", location: "Intérieur du Monolith - Lumière Corrompue" },
+    { name: "Gradient Combattant", description: "Dégâts des attaques gradient augmentés de 25%", cost: "5", location: "Lumière Acte III" },
+    { name: "Gradient Énergisant", description: "+1 PA en utilisant par charge Gradient consommée.", cost: "10", location: "Continent" },
+    { name: "Guérison Accélérante", description: "Soigner un allié lui confère également Rapidité pendant 1 tour.", cost: "5", location: "Continent" },
+    { name: "Guérison Énergisante", description: "+2PA en soignant un allié, une fois par tour.", cost: "10", location: "Manoir Suspendu" },
+    { name: "Hardiesse", description: "Dégâts augmentés de 30 % mais ne peut pas recevoir de soins.", cost: "15", location: "Visages" },
+    { name: "Immaculé", description: "Le personnage inflige 30 % de dégâts en plus tant qu'il ne se fait pas toucher par les attaques ennemies.", cost: "10", location: "Visages" },
+    { name: "Initiative", description: "Le personnage joue en premier", cost: "10", location: "Falaise de Rochevague" },
+    { name: "Initiative Améliorée", description: "Dégâts du premier coup augmentés de 50 %. Une fois par combat.", cost: "5", location: "Nid d'Esquie, Esquisses de Renoir" },
+    { name: "Insaisissable", description: "+1PA en réussissant une esquive parfaite, une fois par tour.", cost: "1", location: "Vallons Fleuris" },
+    { name: "Instant Critique", description: "Chances de critique augmentées de 50 % si la santé est en dessous de 30 %.", cost: "5", location: "Village Gestral" },
+    { name: "Lenteur Améliorée", description: "+15 à la réduction de vitesse imposée par Lenteur.", cost: "15", location: "Île Céleste" },
+    { name: "Lenteur Fracturante", description: "Dégâts de Fracture augmentés de 25 % contre les ennemis ralentis.", cost: "5", location: "Continent" },
+    { name: "Loup Solitaire", description: "Inflige 50 % de dégâts en plus en combattant seul.", cost: "1", location: "Arène secrète des Gestrals, Esquisses de Renoir" },
+    { name: "Marque Affaiblissante", description: "Les cibles marquées infligent 30% de dégâts en moins.", cost: "10", location: "Falaises de Rochevague" },
+    { name: "Marque après Marque", description: "50 % de chances d'appliquer Marque en attaquant une cible déjà marquée.", cost: "10", location: "Intérieur du Monolithe, Manoir Suspendu" },
+    { name: "Marque Brûlante", description: "Applique Brûlure en touchant un ennemi marqué.", cost: "15", location: "Sanctuaire Ancien" },
+    { name: "Marque Curative", description: "Récupère 25% de santé en touchant un ennemi marqué, Une fois par tour.", cost: "20", location: "Village Gestral" },
+    { name: "Marque Gratifiante", description: "+2 PA en attaquant une cible marquée. Une fois par tour.", cost: "5", location: "Fleuve Sacré" },
+    { name: "Marque Surpuissante", description: "Gagne Surpuissance en touchant un ennemi marqué.", cost: "5", location: "" },
+    { name: "Mode Défensif", description: "Quand des dégâts sont subis, consomme 1PA pour subir 30% de dégâts en moins (si possible).", cost: "1", location: "Falaises de Rochevague" },
+    { name: "Mort Brûlante", description: "Applique 3 Brûlures à tous les ennemis en mourant.", cost: "5", location: "Continent, Manoir Suspendu" },
+    { name: "Mort Curative", description: "Lorsque le personnage meurt, les autres membres de l'expédition récupèrent toute leur santé.", cost: "5", location: "Vieille Lumière" },
+    { name: "Mort Énergisante", description: "Lorsque le personnage meurt, +4PA aux alliés.", cost: "5", location: "Terres Oubliées, Gare de Monoco" },
+    { name: "Mort Fracturante", description: "Charge totalement la jauge de Fracture de l'ennemi quand le personnage meurt.", cost: "5", location: "Continent" },
+    { name: "Mort Préservante", description: "Lorsque le personnage meurt, ses alliés gagnent 3 boucliers.", cost: "10", location: "Les Corbeaux" },
+    { name: "Mort Protectrice", description: "Lorsque le personnage meurt, ses alliés gagnent Carapace.", cost: "5", location: "Sirène" },
+    { name: "Mort Subite", description: "Tue le personnage au début du combat.", cost: "1", location: "Continent" },
+    { name: "Parade Curative", description: "Récupèrent 3% de santé à chaque parade réussie.", cost: "5", location: "Continent, Carrière" },
+    { name: "Parade Périlleuse", description: "+1 PA en cas de parade réussie, mais les dégâts subis sont doublés.", cost: "5", location: "Continent" },
+    { name: "Parade Renforçante", description: "Chaque parade réussie augmente les dégâts infligés de 5 % jusqu'à la fin du tour suivant. Le fait de subir le moindre dégât dissipe ce buff.", cost: "5", location: "Manoir Suspendu" },
+    { name: "Partage Curatif", description: "Récupère 15% de tous les soins affectant les autres personnages.", cost: "5", location: "Visages" },
+    { name: "Peintre", description: "Convertit tous les dégâts physiques en dégâts de néant.", cost: "10", location: "Manoir Suspendu" },
+    { name: "Pleine Puissance", description: "Dégâts augmentés de 25 % quand la santé est au maximum.", cost: "15", location: "Lumière Acte III" },
+    { name: "Plus qu’un", description: "La santé maximale est de 1.", cost: "1", location: "Falaises Obscures" },
+    { name: "Plus vif que fort", description: "Joue toujours deux fois de suite, mais inflige 50 % de dégâts en moins.", cost: "10", location: "Lumière (Acte 3)" },
+    { name: "Polyvalence", description: "Après un tir en visée libre, les dégâts d'attaque de base augmentent de 50 % pendant 1 tour.", cost: "5", location: "Sanctuaire de la Nuit Éternelle" },
+    { name: "Pouvoir Épuisant", description: "Dégâts augmentés de 50 % en état d'Épuisement.", cost: "2", location: "Grotte de Rochevague" },
+    { name: "Première Offensive", description: "Le premier coup infligé et subi infligent 50% de dégâts en plus.", cost: "5", location: "Océan Suspendu" },
+    { name: "Pro du Repli", description: "Permet une fuite instantanée.", cost: "40", location: "Continent" },
+    { name: "Puissance Surpeinte", description: "Les dégâts peuvent excéder 9 999 points.", cost: "5", location: "Intérieur du Monolith" },
+    { name: "Purification Drainante", description: "Consomme 1 PA pour empêcher l'application d'altérations (si possible).", cost: "15", location: "L’Aspirante" },
+    { name: "Purification Énergisante", description: "Dissipe la première altération reçue et confère 2 PA.", cost: "10", location: "Intérieur du Monolithe" },
+    { name: "Raccourci", description: "Joue immédiatement si la santé tombe en dessous de 30 %. Une fois par combat.", cost: "5", location: "Lumière Acte III" },
+    { name: "Rapidité Améliorée", description: "+25 % à l'augmentation de vitesse conférée par Rapidité.", cost: "10", location: "Gare de Monoco" },
+    { name: "Rapidité Immédiate", description: "Applique Rapidité pendant 3 tours au début du combat.", cost: "10", location: "Vieille Lumière" },
+    { name: "Rapidité Prolongée", description: "En appliquant Rapidité, sa durée augmente de 2.", cost: "10", location: "Continent" },
+    { name: "Rapidité Protectrice", description: "Applique également Carapace en appliquant Rapidité.", cost: "10", location: "Sanctuaire de la Nuit Éternelle" },
+    { name: "Récupération", description: "Récupère 10 % de santé au début du tour.", cost: "10", location: "Village Gestral" },
+    { name: "Régénération Immédiate", description: "Applique Régénération pendant 3 tours au début du combat.", cost: "10", location: "Sirène" },
+    { name: "Renaissance Énergisante", description: "+3 PA pour tous les alliés lorsque ce personnage est ranimé.", cost: "5", location: "Grotte de Rochevague" },
+    { name: "Renaissance Paradoxale", description: "Joue immédiatement quand ramené à la vie.", cost: "5", location: "Vieille Lumière" },
+    { name: "Renaissance Protégée", description: "+1 bouclier quand le personnage est ranimé.", cost: "5", location: "Vallons Fleuris, Esquisses de Renoir" },
+    { name: "Renaissance Régénérante", description: "Confère Régénération pendant 3 tours en revenant à la vie.", cost: "3", location: "" },
+    { name: "Renaissance Surpuissante", description: "Confère Surpuissance pendant 3 tours en revenant à la vie.", cost: "3", location: "Continent, Manoir Suspendu" },
+    { name: "Roulette", description: "Chaque coup a 50% de chances d'infliger soit 50% soit 200% des dégâts normaux.", cost: "5", location: "Village Gestral, Manoir Suspendu" },
+    { name: "Seconde Chance", description: "Revient à la vie avec 100 % de santé. Une fois par combat.", cost: "40", location: "Intérieur du Monolith, L'Atelier" },
+    { name: "Soins Efficaces", description: "Double tous les soins reçus.", cost: "30", location: "Sirène" },
+    { name: "Soins Énergisants", description: "Confère également 2PA à l'allié soigné.", cost: "10", location: "Continent" },
+    { name: "Soins Partagés", description: "En soignant un allié, se soigne également, mais deux fois moins.", cost: "10", location: "Continent" },
+    { name: "Soins Protecteurs", description: "Soigner un allié lui applique également Carapace pendant 1 tour.", cost: "10", location: "Ruines ésotériques, L'Aspirante" },
+    { name: "Soins Surpuissants", description: "Soigner un allié lui applique également Surpuissance pendant 1 tour.", cost: "10", location: "Sanctuaire de la Nuit Éternelle" },
+    { name: "Solidification", description: "+2 boucliers quand la santé du personnage tombe en dessous de 50 %. Une fois par combat.", cost: "10", location: "Fleuve Sacré, Caverne Écrasante" },
+    { name: "Soutien Efficace", description: "+2 PA en utilisant un objet.", cost: "5", location: "Continent" },
+    { name: "Spécialiste des Fractures", description: "Dégâts de Fracture augmentés de 50%, mais dégâts de base réduits de 20%.", cost: "1", location: "" },
+    { name: "Surpuissance Améliorée", description: "+15 % à l'augmentation de dégâts conférée par Surpuissance.", cost: "10", location: "Sirène" },
+    { name: "Surpuissance Immédiate", description: "Applique Surpuissance pendant 3 tours au début du combat.", cost: "10", location: "Cimetière Flottant" },
+    { name: "Surpuissance Prolongée", description: "En appliquant Surpuissance, sa durée augmente de 2.", cost: "10", location: "Vieille Lumière" },
+    { name: "Surpuissance Rapide", description: "Applique également Rapidité en appliquant Surpuissance.", cost: "10", location: "L'Aspirante, Esquisse de Renoir" },
+    { name: "Survivant", description: "Permet de survivre à une attaque fatale en conservant 1 PV. Une fois par combat.", cost: "20", location: "Gare de Monoco" },
+    { name: "Teinte Accélérante", description: "Les teintes curatives confèrent également Rapidité.", cost: "5", location: "Sanctuaire de la Nuit Éternelle" },
+    { name: "Teinte Chargeante", description: "+5 % de charge Gradient en utilisant un objet.", cost: "2", location: "Continent" },
+    { name: "Teinte Curative Énergisante", description: "Les teintes curatives confèrent également 1PA.", cost: "1", location: "Falaises de Rochevague" },
+    { name: "Teinte de Vie Énergisante", description: "Les teintes de vie confèrent également 3PA.", cost: "10", location: "Terres Oubliées, Fleuve Sacré" },
+    { name: "Teinte Préservante", description: "Les teintes curatives confèrent également 2 boucliers.", cost: "10", location: "Continent" },
+    { name: "Teinte Protectrice", description: "Les teintes curatives confèrent également Carapace.", cost: "5", location: "L’Aspirante" },
+    { name: "Teinte Purificatrice", description: "Les teintes curatives dissipent également les altérations de la cible.", cost: "5", location: "Vallons Fleuris" },
+    { name: "Teinte Renforçante", description: "Les teintes énergisantes confèrent également Surpuissance.", cost: "5", location: "Terres Oubliées, L'Aspirante" },
+    { name: "Teinte Temporelle", description: "Les teintes énergisantes confèrent également Rapidité.", cost: "10", location: "Vieille Lumière, L'Aspirante" },
+    { name: "Tir Perforant", description: "Dégâts de visée libre augmentés de 25 %.\nLes tirs en visée libre ignorent les boucliers.", cost: "2", location: "Sanctuaire Ancien" },
+    { name: "Tireur d'Élite", description: "Chaque tour, le premier tir en visée libre inflige 200 % de dégâts en plus et offre une possibilité de Fracture.", cost: "15", location: "Continent, L'Aspirante, L'Atelier" },
+    { name: "Tirs Accélérants", description: "20 % de chances de gagner Rapidité sur les tirs en visée libre.", cost: "3", location: "Manoir Suspendu" },
+    { name: "Tirs Brûlants", description: "20 % de chances d'appliquer Brûlure sur les tirs en visée libre.", cost: "3", location: "Vallons Fleuris, Fleuve Sacré, Gare de Monoco" },
+    { name: "Tirs Énergisants", description: "20 % de chances de gagner 1 PA sur les tirs en visée libre.", cost: "10", location: "Manoir Suspendu" },
+    { name: "Tirs Fracturants", description: "Dégâts de Fracture augmentés de 50 % sur les tirs en visée libre.", cost: "1", location: "Falaises de Rochevague" },
+    { name: "Tirs Marquants", description: "20 % de chances d'appliquer Marque sur les tirs en visée libre.", cost: "3", location: "Océan Suspendu" },
+    { name: "Tirs Protecteurs", description: "20 % de chances de gagner Carapace sur les tirs en visée libre.", cost: "3", location: "" },
+    { name: "Tirs Surpuissants", description: "20 % de chances de gagner Surpuissance sur les tirs en visée libre.", cost: "3", location: "Village Gestral" },
+    { name: "Travail d'Équipe", description: "Dégâts augmentés de 10 % si tous les alliés sont encore en vie.", cost: "5", location: "Continent" },
+    { name: "Tricheur", description: "Joue toujours deux fois de suite.", cost: "40", location: "Continent" },
+    { name: "Visée Améliorée", description: "Dégâts de visée libre augmentés de 50 %.", cost: "3", location: "Village Gestral" },
+    { name: "Vitalité de Cléa", description: "Récupère 100% de santé au début du tour si aucun dégât n'a été subi depuis le précédent tour.", cost: "30", location: "Manoir Suspendu" },
+    { name: "Vol de Vie", description: "Les attaques de base rendent 15% de santé.", cost: "15", location: "Sanctuaire Ancien" },
+    { name: "Vulnérabilité Améliorée", description: "+15 % à l'augmentation de dégâts imposée par Vulnérabilité.", cost: "15", location: "Tour Éternelle, Monolith - Melosh (Marchand)" },
+];
+
+function removeAccents(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+const commands = {
+    ping: (message) => {
+        message.channel.send({ content: 'Pong!' });
+    },
+    echo: (message, args) => {
+        const response = args.join(' ');
+        message.channel.send({ content: response });
+    },
+    pictos: (message, args) => {
+        if (!args.length) {
+            return message.channel.send({ content: 'Merci de préciser un nom, exemple : !pictos Affaiblissement' });
+        }
+        const search = removeAccents(args.join(' ').toLowerCase());
+        const results = pictosDB.filter(pic =>
+            removeAccents(pic.name.toLowerCase()).includes(search)
+        );
+        if (results.length === 0) {
+            return message.channel.send({ content: `Aucun picto trouvé pour "${search}".` });
+        }
+        // Affiche toutes les infos pour chaque résultat
+        const response = results.map(pic =>
+            `**${pic.name}**\n${pic.description}\nCoût : ${pic.cost}\nLieu : ${pic.location}`
+        ).join('\n\n');
+        message.channel.send({ content: response });
+    },
+    zone: (message, args) => {
+        if (!args.length) {
+            return message.channel.send({ content: 'Merci de préciser une zone, exemple : !zone Village Gestral' });
+        }
+        const search = removeAccents(args.join(' ').toLowerCase());
+        const results = pictosDB.filter(pic =>
+            removeAccents((pic.location || '').toLowerCase()).includes(search)
+        );
+        if (results.length === 0) {
+            return message.channel.send({ content: `Aucun picto trouvé pour la zone "${args.join(' ')}".` });
+        }
+        const response = results.map(pic =>
+            `**${pic.name}**\n${pic.description}\nCoût : ${pic.cost}\nLieu : ${pic.location}`
+        ).join('\n\n');
+        message.channel.send({ content: response });
+    },
+    totalcost: (message) => {
+        const total = pictosDB.reduce((sum, pic) => sum + (parseInt(pic.cost) || 0), 0);
+        message.channel.send({ content: `Le coût total de tous les pictos est : ${total}` });
+    },
+    number: (message) => {
+        const count = pictosDB.length;
+        message.channel.send({ content: `Il y a ${count} pictos au total.` });
+    },
+};
+
+module.exports = commands;

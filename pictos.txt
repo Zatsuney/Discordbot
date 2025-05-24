@@ -1,0 +1,192 @@
+Affaiblissement Amélioré	+15 % à la réduction de dégâts infligée par Affaiblissement.	15	Tour Eternelle
+Affinité Brûlante	Dégâts augmentés de 25 % contre les cibles affectées par Brûlure.	10	Coeur Ardent
+Affinité Inversée	Applique Inversion sur soi-même pendant 3 tours au début du combat.Dégâts augmentés de 50 % en état d'Inversion.	5	Terres Oubliées
+Altéré	Dégâts augmentés de 15 % par altération sur le personnage.	3	Falaises de Rochevague, L'Aspirante
+Anti Brûlure	Immunité contre brûlure.	15	Coeur Ardent, Manoir suspendu
+Anti-Charme	Immunité contre charme.	10	Sirène
+Anti-Corruption	Immunité contre corruption.	10	L'aspirante
+Anti Étourdissement	Immunité contre étourdissement.	5	Continent
+Anti-Gel	Immunité contre gel.	15	Coeur Ardent
+Assurance	Subit 50% de dégats en mois mais ne peut pas recevoir de soins.	20	Continent, Falaises de Rochevague
+Attaque Accrue	Chaque fois que le personnage inflige des dégâts, il tente de consommer 1 PA.S'il y parvient, les dégâts sont augmentés de 20 %.	10	Visages
+Attaque Affaiblissante	Les attaques de base infligent Affaiblissement pendant 1 tour.	10	Monolith
+Attaque Améliorée	Dégâts d'attaque de base augmentés de 50 %.	7	Vallons Fleuris
+Attaque Combo I	L'attaque de base permet de porter 1 coup supplémentaire.	10	Terres Oubliées
+Attaque Combo II	L'attaque de base permet de porter 1 coup supplémentaire.	20	Intérieur du Monolith - Clair-Obscur Chromatique
+Attaque Combo III	L'attaque de base permet de porter 1 coup supplémentaire.	30	Arène clandestine des Gestrals
+Attaque Fracturante	Dégâts de Fracture augmentés de 50 % lors des attaques de base.	1	Océan Suspendu, Intérieur du Monolith
+Attaque Fragilisante	Les attaques de base infligent Vulnérabilité pendant 1 tour.	10	Monolith
+Attaque Protectrice	Les attaques de base confèrent Carapace pendant 1 tour.	10	Sanctuaire de la Nuit Eternelle
+Attaque Renforçante	Les attaques de base confèrent Surpuissance pendant 1 tour.	10	Vallons Fleuris, Fleuve Sacré
+Au cœur de l'action	+3 boucliers au début du combat, mais le maximum de santé est réduit de moitié.	10	Rives Obscures
+Au seuil de la mort	Inflige 50% de dégats en plus si la santé est en dessous de 10%	5	L’Atelier
+Bombe Funèbre	Inflige des dégats à tous les ennemis en mourant	5	Continent
+Bouclier Basique	+1 bouclier si le personnage n'a aucun bouclier au début du tour.	20	Croisée des chemins
+Bouclier Surpuissant	Dégâts augmentés de 10 % par point de bouclier sur le personnage.	5	Sanctuaire de la Nuit Eternelle
+Boucliers Affinés	Dégâts augmentés de 30 % tant que le personnage a des boucliers. Mais tous ses boucliers sont perdus au moindre coup subi.	15	Fleuve Sacré
+Brûlure Énergisante	+1 PA en appliquant Brûlure. Une fois par tour.	10	Coeur Ardent
+Brûlure Fracturante	Dégâts de Fracture augmentés de 25 % contre les ennemis affectés par Brûlure.	5	Continent
+Brûlure Prolongée	La durée de Brûlure augmente de 2tours.	15	Manoir Suspendu
+Brûlures Critiques	Chances de critique augmentées de 25 % contre les ennemis affectés par Brûlure.	5	Vallons Fleuris, Sanctuaire de la Nuit Éternelle
+Buff Curatif	Récupère 15 % de santé en appliquant un buff.	10	L'Aspirante
+Canon de verre	Inflige 25 % de dégâts en plus, mais les dégâts subis augmentent eux aussi de 25 %.	10	Visages, Fleuve Sacré
+Carapace Améliorée	+10 % à la réduction de dégâts conférée par Carapace.	10	Sirene
+Carapace Immédiate	Applique Carapace pendant 3 tours au début du combat.	10	Falaises de Rochevague
+Carapace Prolongée	En appliquant Carapace, sa durée augmente de 2.	10	Continent, L'Aspirante, Terres Oubliées
+Carapace Surpuissante	Applique également Surpuissance en appliquant Carapace.	10	Continent, Sirènes
+Charges sur Altération	+10 % de charge Gradient en appliquant un buff. Une fois par tour.	10	Manoir Suspendu
+Charges sur Attaque	+15 % de charge Gradient à chaque attaque de base.	7	L’Aspirante
+Charges sur Brûlure	+20 % de charge Gradient en infligeant Brûlure à une cible. Une fois par tour.	10	Esquisses de Renoir
+Charges sur Contre	+10 % de charge Gradient à chaque contre.	10	L’Aspirante
+Charges sur Critiques	+20 % de charge Gradient en cas de coup critique. Une fois par tour.	10	L'Aspirante
+Charges sur Étourdissement	+5 % de charge Gradient en touchant un ennemi étourdi.	5	Lumière Acte III
+Charges sur Fracture	Dégâts de Fracture des attaques Gradient augmentés de 50 %.	5	Manoir Suspendu
+Charges sur Marque	+20 % de charge Gradient en touchant une cible marquée. Une fois par tour.	10	Sanctuaire de la Nuit Eternelle
+Contamination Bénéfique	+2 PA en appliquant une altération. Une fois par tour.	15	Feuilles Ambrées
+Contre Amélioré I	Dégâts de contre augmentés de 50 %.	3	Continent, Manoir Suspendu, Esquisses de Renoir
+Contre Amélioré II	Dégâts de contre augmentés de 75 %.	5	Visages - Ramasseur Chromatique
+Contre Amélioré III	Dégâts de contre augmentés de 100 %.	7	Glacier Ardent
+Contre Curatif	Récupère 20% de santé à chaque contre.	10	Vieille Lumière
+Contre Fracturant	Dégâts de Fracture augmentés de 50 % lors des contres.	3	Falaises de Rochevague
+Critiques sur Faiblesse	Chances de critique augmentées de 25 % contre les ennemis affectés par Faiblesse.	5	
+Critiques sur Vulnérabilité	Chances de critique augmentées de 25 % contre les ennemis affectés par Vulnérabilité.	5	Continent
+Danger Accélérant	Gagne Rapidité en tombant sous 50% de santé	5	Feuilles Ambrées
+Danger Protecteur	Gagne Carapace en tombant sous 50% de santé.	5	Falaise de Rochevague
+Danger Surpuissant	Gagne Surpuissance en tombant sous 50% de santé.	5	Falaises de Rochevague
+Défense Aléatoire	Les dégats subis sont aléatoirement multipliés par une valeur comprise en 50% et 200%	5	Intérieur du Monolithe
+Dernier Rempart Accélérant	Le personnage gagne Rapidité s'il se bat seul.	3	Arène secrète des Gestrals
+Dernier Rempart Critique	100% de chances de critiques en combattant seul.	3	Arène secrète des Gestrals
+Dernier Rempart Protecteur	Le personnage gagne Carapace s'il se bat seul.	3	Arène secrète des Gestrals
+Dernier Rempart Renforçant	Le personnage gagne Surpuissance s'il se bat seul.	3	Arène secrète des Gestrals
+Double Brûlure	+1 brulure pour chaque brulure infligé.	30	Visages
+Double Marque	Les marques requièrent un coup de plus pour etre retirées.	20	Sirène
+Échauffement	Dégâts augmentés de 5 % par tour. Peut se cumuler jusqu'à 5 fois.	15	Continent
+Élimination Revigorante	Récupère 50 % de santé en tuant un ennemi.	5	Terres Oubliées, Esquisses de Renoir
+Énergie - Attaque I	+1 PA à chaque attaque de base.	10	Continent, Esquisse de Renoir
+Énergie - Attaque II	+1 PA à chaque attaque de base.	15	Sirène
+Énergie - Carapace	Confère 2PA en appliquant Carapace.	10	Continent
+Énergie - Départ I	+1 PA au début du combat.	5	Continent
+Énergie - Départ II	+1 PA au début du combat.	10	Sanctuaire Ancien
+Énergie - Départ III	+1 PA au début du combat.	15	Nid d'Esquie
+Énergie - Départ IV	+1 PA au début du combat.	20	Terres Oubliées
+Énergie - Faiblesse	+1 PA en touchant une faiblesse. Une fois par tour.	3	Intérieur du Monolith
+Énergie - Parade	+1 PA en cas de parade réussie.	15	Fleuve Sacré, Esquisses de Renoir
+Énergie - Rapidité	Confère 2PA en appliquant Rapidité.	10	L'Aspirante
+Énergie - Surpuissance	Confère 2PA en appliquant Surpuissance.	10	Lumière Acte III
+Energie – Tour	+1 PA au début du tour.	20	Sirène, Fleuve Sacré, Esquisses de Renoir
+Énergie de saut	+1 PA à chaque contre sauté.	5	Sanctuaire Ancien
+Energie Douloureuse	Plus aucun gain de PA en cas de parade réussie, mais +1PA lorsque le personnage se fait toucher.	10	Manoir Suspendu
+Énergie Maitrisée	+1 PA à chaque gain de PA.	40	Continent
+Énergie Mortelle I	+3 PA en tuant un ennemi.	2	Continent
+Énergie Mortelle II	+3 PA en tuant un ennemi.	2	Vallons Fleuris
+Esquive Renforçante	Les dégâts augmentent de 5 % à chaque esquive successive réussie. Se cumule un maximum de 10 fois.	5	Continent
+Étourdissement critique	100 % de chances de critique en frappant une cible étourdie.	5	Fleuve Sacré
+Etourdissement Curatif	Récupère 5% de santé en frappant une cible étourdie.	10	Lumière Acte III
+Etourdissement Énergisant	+1 PA en frappant une cible étourdie à l'aide d'une compétence.	10	Manoir Suspendu
+Etourdissement opportun	Dégâts augmentés de 30 % contre les cibles étourdies.	10	Fleuve Sacré
+Feu Curatif	Récupère 25% de santé en attaquant une cible entrain de bruler. Une fois par tour.	10	Sirène
+Fracture Accélérante	Rejoue en cas de fracture réussie.	3	Sanctuaire de la Nuit Eternelle, L'Atelier
+Fracture Améliorée	Dégâts de Fracture augmentés de 25 %.	10	Sanctuaire Ancien
+Fracture Brûlante	Applique 3 brulure en fracturant un ennemi.	3	Glacier Ardent
+Fracture Critique	Dégats de fracture augmentées de 25 % en cas de coup critique.	5	Continent
+Fracture Embrasante	Fracturer un ennemi double son nombre de brulures.	5	L'Aspirante, Tour Eternelle
+Fracture Énergisante	+3 PA en infligeant Fracture à un ennemi.	3	Océan Suspendu
+Fracture Fragilisante	Applique Vulnérabilité en cas de fracture.	5	
+Fracture Gradient	+50 % de charges gradient en infligeant fracture a une cible.	5	Sanctuaire de la Nuit Eternelle
+Fracture Marquante	Applique Marque en cas de Fracture.	5	Sanctuaire de la Nuit Eternelle
+Fracture Ralentissante	Applique Lenteur en cas de Fracture.	5	Manoir Suspendu
+Fracture Renforçante	Gagne Surpuissance en Fracturant un ennemi.	3	Manoir Suspendu
+Fracture sur attaque	Les attaques de bas peuvent fracturer	10	Intérieur du monolith - Lumiere Corrompue
+Gradient Combattant	Dégâts des attaques gradient augmentés de 25%	5	Lumière Acte III
+Gradient Énergisant	+1 PA en utilisant par charge Gradient consommée.	10	Continent
+Guérison Accélérante	Soigné un allié lui confère également Rapidité pendant 1 tour.	5	Continent
+Guérison Énergisante	+2PA en soignant un allié, une fois par tour.	10	Manoir Suspendu
+Hardiesse	Dégâts augmentés de 30 % mais ne peut pas recevoir de soins.	15	Visages
+Immaculé	Le personnage inflige 30 % de dégâts en plus tant qu'il ne se fait pas toucher par les attaques ennemies.	10	Visages
+Initiative	Le personnage joue en premier	10	Falaise de Rochevague
+Initiative Améliorée	Dégâts du premier coup augmentés de 50 %. Une fois par combat.	5	Nid d'Esquie, Esquisses de Renoir
+Insaisissable	+1PA en réussissant une esquive parfaite, une fois par tour.	1	Vallons Fleuris
+Instant Critique	Chances de critique augmentées de 50 % si la santé est en dessous de 30 %.	5	Village Gestral
+Lenteur Améliorée	+15 à la réduction de vitesse imposée par Lenteur.	15	Île Céleste
+Lenteur Fracturante	Dégâts de Fracture augmentés de 25 % contre les ennemis ralentis.	5	Continent
+Loup Solitaire	Inflige 50 % de dégâts en plus en combattant seul.	1	Arène secrète des Gestrals, Esquisses de Renoir
+Marque Affaiblissante	Les cibles marquées infligent 30% de dégats en moins.	10	Falaises de Rochevague
+Marque après Marque	50 % de chances d'appliquer Marque en attaquant une cible déjà marquée.	10	Intérieur du Monolithe, Manoir Suspendu
+Marque Brûlante	Applique Brûlure en touchant un ennemi marqué.	15	Sanctuaire Ancien
+Marque Curative	Récupère 25% de santé en touchant un ennemi marqué, Une fois par tour.	20	Village Gestral
+Marque Gratifiante	+2 PA en attaquant une cible marquée. Une fois par tour.	5	Fleuve Sacré
+Marque Surpuissante	Gagne Surpuissance en touchant un ennemi marqué.	5	
+Mode Défensif	Quand des dégats sont subis, consomme 1PA pour subir 30% de dégats en moins (si possible).	1	Falaises de Rochevague
+Mort Brûlante	Applique 3 Brûlures à tous les ennemis en mourant.	5	Continent, Manoir Suspendu
+Mort Curative	Lorsque le personnage meurt, les autres membres de l'expédition récupèrent toute leur santé.	5	Vieille Lumière
+Mort Énergisante	Lorsque le personnage meurt, +4PA aux alliés.	5	Terres Oubliées, Gare de Monoco
+Mort Fracturante	Charge totalement la jauge de Fracture de l'ennemie quand le personnage meurt.	5	Continent
+Mort Préservante	Lorsque le personnage meurt, ses alliés gagnent 3 boucliers.	10	Les Corbeaux
+Mort Protectrice	Lorsque le personnage meurt, ses alliés gagnent Carapace.	5	Sirène
+Mort Subite	Tue le personnage au début du combat.	1	Continent
+Parade Curative	Récupèrent 3% de santé à chaque parade réussie.	5	Continent, Carrière
+Parade Périlleuse	+1 PA en cas de parade réussie, mais les dégâts subis sont doublés.	5	Continent
+Parade Renforçante	Chaque parade réussie augmente les dégâts infligés de 5 % jusqu'à la fin du tour suivant. Le fait de subir le moindre dégât dissipe ce buff.	5	Manoir Suspendu
+Partage Curatif	Récupère 15% de tous les soins affectant les autres personnages.	5	Visages
+Peintre	Convertit tous les dégâts physiques en dégâts de néant.	10	Manoir Suspendu
+Pleine Puissance	Dégâts augmentés de 25 % quand la santé est au maximum.	15	Lumière Acte III
+Plus qu’un	La santé maximale est de 1.	1	Falaises Obscures
+Plus vif que fort	Joue toujours deux fois de suite, mais inflige 50 % de dégâts en moins.	10	Lumière (Acte 3)
+Polyvalence	Après un tir en visée libre, les dégâts d'attaque de base augmentent de 50 % pendant 1 tour.	5	Sanctuaire de la Nuit Eternelle
+Pouvoir Épuisant	Dégâts augmentés de 50 % en état d'Épuisement.	2	Grotte de Rochevague
+Première Offensive	Le premier coup infligé et subi infligent 50% de dégats en plus.	5	Océan Suspendu
+Pro du Repli	Permet une fuite instantanée.	40	Continent
+Puissance Surpeinte	Les dégâts peuvent excéder 9 999 points.	5	Intérieur du Monolith
+Purification Drainante	Consomme 1 PA pour empêcher l'application d'altérations (si possible).	15	L’Aspirante
+Purification Énergisante	Dissipe la première altération reçue et confère 2 PA.	10	Intérieur du Monolithe
+Raccourci	Joue immédiatement si la santé tombe en dessous de 30 %. Une fois par combat.	5	Lumière Acte III
+Rapidité Améliorée	+25 % à l'augmentation de vitesse conférée par Rapidité.	10	Gare de Monoco
+Rapidité Immédiate	Applique Rapidité pendant 3 tours au début du combat.	10	Vieille Lumière
+Rapidité Prolongée	En appliquant Rapidité, sa durée augmente de 2.	10	Continent
+Rapidité Protectrice	Applique également Carapace en appliquant Rapidité.	10	Sanctuaire de la Nuit Eternelle
+Récupération	Récupère 10 % de santé au début du tour.	10	Village Gestral
+Régénération Immédiate	Applique Régénération pendant 3 tours au début du combat.	10	Sirène
+Renaissance Énergisante	+3 PA pour tous les alliés lorsque ce personnage est ranimé.	5	Grotte de Rochevague
+Renaissance Paradoxale	Joue immédiatement quand ramené à la vie.	5	Vieille Lumière
+Renaissance Protégée	+1 bouclier quand le personnage est ranimé.	5	Vallons Fleuris, Esquisses de Renoir
+Renaissance Régénérante	Confère Régénération pendant 3 tours en revenant à la vie.	3	
+Renaissance Surpuissante	Confère Surpuissance pendant 3 tours en revenant à la vie.	3	Continent, Manoir Suspendu
+Roulette	Chaque coup a 50% de chances d'infliger soit 50% soit 200% des dégats normaux.	5	Village Gestral, Manoir Suspendu
+Seconde Chance	Revient à la vie avec 100 % de santé. Une fois par combat.	40	Intérieur du Monolith, L'Atelier
+Soins Efficaces	Double tous les soins reçus.	30	Sirène
+Soins Énergisants	Confère également 2PA à l'allié soigné.	10	Continent
+Soins Partagés	En soignant un allié, se soigne également, mais deux fois moins.	10	Continent
+Soins Protecteurs	Soigner un allié lui applique également Carapace pendant 1 tour.	10	Ruines ésotériques, L'Aspirante
+Soins Surpuissants	Soigner un allié lui applique également Surpuissance pendant 1 tour.	10	Sanctuaire de la Nuit Eternelle
+Solidification	+2 boucliers quand la santé du personnage tombe en dessous de 50 %. Une fois par combat.	10	Fleuve Sacré, Caverne Ecrasante
+Soutien Efficace	+2 PA en utilisant un objet.	5	Continent
+Spécialiste des Fractures	Dégats de Fracture aumentés de 50%, mais dégats de base réduits de 20%.	1	
+Surpuissance Améliorée	+15 % à l'augmentation de dégâts conférée par Surpuissance.	10	Sirène
+Surpuissance Immédiate	Applique Surpuissance pendant 3 tours au début du combat.	10	Cimetière Flottant
+Surpuissance Prolongée	En appliquant Surpuissance, sa durée augmente de 2.	10	Vieille Lumière
+Surpuissance Rapide	Applique également Rapidité en appliquant Surpuissance.	10	L'Aspirante, Esquisse de Renoir
+Survivant	Permet de survivre à une attaque fatale en conservant 1 PV. Une fois par combat.	20	Gare de Monoco
+Teinte Accélérante	Les teintes curatives confèrent également Rapidité.	5	Sanctuaire de la Nuit Eternelle
+Teinte Chargeante	+5 % de charge Gradient en utilisant un objet.	2	Continent
+Teinte Curative Énergisante	Les teintes curatives confèrent également 1PA.	1	Falaises de Rochevague
+Teinte de Vie Énergisante	Les teintes de vie confèrent également 3PA.	10	Terres Oubliées, Fleuve Sacré
+Teinte Préservante	Les teintes curatives confèrent également 2 boucliers.	10	Continent
+Teinte Protectrice	Les teintes curatives confèrent également Carapace.	5	L’Aspirante
+Teinte Purificatrice	Les teintes curatives dissipent également les altérations de la cible.	5	Vallons Fleuris
+Teinte Renforçante	Les teintes énergisantes confèrent également Surpuissance.	5	Terres Oubliées, L'Aspirante
+Teinte Temporelle	Les teintes énergisantes confèrent également Rapidité.	10	Vieille Lumière, L'Aspirante
+Tir Perforant	Dégâts de visée libre augmentés de 25 %.\nLes tirs en visée libre ignorent les boucliers.	2	Sanctuaire Ancien
+Tireur d'Élite	Chaque tour, le premier tir en visée libre inflige 200 % de dégâts en plus et offre une possibilité de Fracture.	15	Continent, L'Aspirante, L'Atelier
+Tirs Accélérants	20 % de chances de gagner Rapidité sur les tirs en visée libre.	3	Manoir Suspendu
+Tirs Brûlants	20 % de chances d'appliquer Brûlure sur les tirs en visée libre.	3	Vallons Fleuris, Fleuve Sacré, Gare de Monoco
+Tirs Énergisants	20 % de chances de gagner 1 PA sur les tirs en visée libre.	10	Manoir Suspendu
+Tirs Fracturants	Dégâts de Fracture augmentés de 50 % sur les tirs en visée libre.	1	Falaises de Rochevague
+Tirs Marquants	20 % de chances d'appliquer Marque sur les tirs en visée libre.	3	Océan Suspendu
+Tirs Protecteurs	20 % de chances de gagner Carapace sur les tirs en visée libre.	3	
+Tirs Surpuissants	20 % de chances de gagner Surpuissance sur les tirs en visée libre.	3	Village Gestral
+Travail d'Équipe	Dégâts augmentés de 10 % si tous les alliés sont encore en vie.	5	Continent
+Tricheur	Joue toujours deux fois de suite.	40	Continent
+Visée Améliorée	Dégâts de visée libre augmentés de 50 %.	3	Village Gestral
+Vitalité de Cléa	Récupère 100% de santé au début du tour si aucun dégat n'a été subi depuis le précédent tour.	30	Manoir Suspendu
+Vol de Vie	Les attaques de base rendent 15% de santé.	15	Sanctuaire Ancien
+Vulnérabilité Améliorée	+15 % à l'augmentation de dégâts imposée par Vulnérabilité.	15	Tour Eternelle, Monolith - Melosh (Marchand
