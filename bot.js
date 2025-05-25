@@ -20,7 +20,9 @@ const slashCommands = [
         .addStringOption(option =>
             option.setName('nom')
                 .setDescription('Nom du picto à rechercher')
-                .setRequired(true)),
+                .setRequired(true)
+                .setAutocomplete(true)) // Ajoute cette ligne
+        ,
     new SlashCommandBuilder()
         .setName('zone')
         .setDescription('Recherche les pictos d\'une zone')
@@ -112,6 +114,20 @@ client.on('interactionCreate', async interaction => {
     else if (interaction.commandName === 'number') {
         const count = pictosDB.length;
         await interaction.reply(`Il y a ${count} pictos au total.`);
+    }
+});
+
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isAutocomplete()) return;
+    if (interaction.commandName === 'pictos') {
+        const focusedValue = interaction.options.getFocused().toLowerCase();
+        const choices = pictosDB
+            .map(pic => pic.name)
+            .filter(name => name.toLowerCase().includes(focusedValue))
+            .slice(0, 25); // Discord limite à 25 suggestions
+        await interaction.respond(
+            choices.map(choice => ({ name: choice, value: choice }))
+        );
     }
 });
 
