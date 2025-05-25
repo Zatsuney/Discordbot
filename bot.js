@@ -2,14 +2,15 @@ require('dotenv').config();
 
 const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } = require('discord.js');
 const express = require("express");
+const commands = require('./commands');
 
 // --- Importe la DB et la fonction removeAccents ---
-const pictosDB = require('./commands/pictosDB'); // Mets pictosDB dans un fichier séparé si besoin
+const pictosDB = require('./commands/pictosDB');
 function removeAccents(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 // --- Définition des slash commands ---
 const slashCommands = [
