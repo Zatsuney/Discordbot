@@ -5,7 +5,7 @@ const express = require("express");
 const commands = require('./commands');
 
 // --- Importe la DB et la fonction removeAccents ---
-const pictosDB = require('./commands/pictosDB');
+const pictosDB = require('./pictosDB');
 function removeAccents(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
