@@ -70,6 +70,24 @@ client.on('ready', () => {
 });
 
 client.on('interactionCreate', async interaction => {
+    // --- Autocomplétion ---
+    if (interaction.isAutocomplete()) {
+        if (interaction.commandName === 'pictos') {
+            const focusedValue = removeAccents(interaction.options.getFocused().toLowerCase());
+            const choices = pictosDB
+                .map(pic => pic.name)
+                .filter(name =>
+                    removeAccents(name.toLowerCase()).includes(focusedValue)
+                )
+                .slice(0, 25); // Discord limite à 25 suggestions
+            await interaction.respond(
+                choices.map(choice => ({ name: choice, value: choice }))
+            );
+        }
+        return; // On arrête ici pour ne pas traiter comme une commande normale
+    }
+
+    // --- Slash commands ---
     if (!interaction.isChatInputCommand()) return;
 
     if (interaction.commandName === 'ping') {
@@ -87,13 +105,7 @@ client.on('interactionCreate', async interaction => {
         if (results.length === 0) {
             await interaction.reply({ content: `Aucun picto trouvé pour "${search}".`, ephemeral: true });
         } else {
-            const embed = new EmbedBuilder()
-                .setTitle(`Résultats pour "${search}"`)
-                .setColor(0x0099ff)
-                .setDescription(results.slice(0, 5).map(pic =>
-                    `**${pic.name}**\n${pic.description}\nCoût : ${pic.cost}\nLieu : ${pic.location}`
-                ).join('\n\n'));
-            await interaction.reply({ embeds: [embed] });
+            await sendPaginatedEmbeds(interaction, results, `Résultats pour "${search}"`, 0x0099ff);
         }
     }
     else if (interaction.commandName === 'zone') {
@@ -104,13 +116,7 @@ client.on('interactionCreate', async interaction => {
         if (results.length === 0) {
             await interaction.reply({ content: `Aucun picto trouvé pour la zone "${interaction.options.getString('zone')}".`, ephemeral: true });
         } else {
-            const embed = new EmbedBuilder()
-                .setTitle(`Pictos pour la zone "${interaction.options.getString('zone')}"`)
-                .setColor(0x00cc99)
-                .setDescription(results.slice(0, 10).map(pic =>
-                    `**${pic.name}**\n${pic.description}\nCoût : ${pic.cost}\nLieu : ${pic.location}`
-                ).join('\n\n'));
-            await interaction.reply({ embeds: [embed] });
+            await sendPaginatedEmbeds(interaction, results, `Pictos pour la zone "${interaction.options.getString('zone')}"`, 0x00cc99);
         }
     }
     else if (interaction.commandName === 'totalcost') {
@@ -131,23 +137,70 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
-client.on('interactionCreate', async interaction => {
-    if (!interaction.isAutocomplete()) return;
-    if (interaction.commandName === 'pictos') {
-        const focusedValue = removeAccents(interaction.options.getFocused().toLowerCase());
-        const choices = pictosDB
-            .map(pic => pic.name)
-            .filter(name =>
-                removeAccents(name.toLowerCase()).includes(focusedValue)
-            )
-            .slice(0, 25); // Discord limite à 25 suggestions
-        await interaction.respond(
-            choices.map(choice => ({ name: choice, value: choice }))
-        );
-    }
-});
+async function sendPaginatedEmbeds(interaction, results, title, color) {
+    const perPage = 5;
+    let page = 0;
+    const totalPages = Math.ceil(results.length / perPage);
 
-client.login(process.env.DISCORD_TOKEN);
+    function getEmbed(page) {
+        return new EmbedBuilder()
+            .setTitle(`${title} (page ${page + 1}/${totalPages})`)
+            .setColor(color)
+            .setDescription(
+                results.slice(page * perPage, (page + 1) * perPage)
+                    .map(pic =>
+                        `**${pic.name}**\n${pic.description}\nCoût : ${pic.cost}\nLieu : ${pic.location}`
+                    ).join('\n\n')
+            );
+    }
+
+    const row = new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+            .setCustomId('prev')
+            .setLabel('⬅️')
+            .setStyle(ButtonStyle.Primary)
+            .setDisabled(page === 0),
+        new ButtonBuilder()
+            .setCustomId('next')
+            .setLabel('➡️')
+            .setStyle(ButtonStyle.Primary)
+            .setDisabled(page === totalPages - 1)
+    );
+
+    const reply = await interaction.reply({
+        embeds: [getEmbed(page)],
+        components: totalPages > 1 ? [row] : [],
+        fetchReply: true
+    });
+
+    if (totalPages <= 1) return;
+
+    const collector = reply.createMessageComponentCollector({ time: 60000 });
+
+    collector.on('collect', async i => {
+        if (i.user.id !== interaction.user.id) {
+            await i.reply({ content: "Tu ne peux pas utiliser ces boutons.", ephemeral: true });
+            return;
+        }
+        if (i.customId === 'prev' && page > 0) page--;
+        if (i.customId === 'next' && page < totalPages - 1) page++;
+
+        const newRow = ActionRowBuilder.from(row);
+        newRow.components[0].setDisabled(page === 0);
+        newRow.components[1].setDisabled(page === totalPages - 1);
+
+        await i.update({
+            embeds: [getEmbed(page)],
+            components: [newRow]
+        });
+    });
+
+    collector.on('end', async () => {
+        if (reply.editable) {
+            await reply.edit({ components: [] });
+        }
+    });
+}
 
 // --- Express keep-alive ---
 const app = express();
