@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const express = require("express");
 const commands = require('./commands');
 
@@ -87,10 +87,13 @@ client.on('interactionCreate', async interaction => {
         if (results.length === 0) {
             await interaction.reply({ content: `Aucun picto trouvé pour "${search}".`, ephemeral: true });
         } else {
-            const response = results.map(pic =>
-                `**${pic.name}**\n${pic.description}\nCoût : ${pic.cost}\nLieu : ${pic.location}`
-            ).join('\n\n');
-            await interaction.reply({ content: response.length > 2000 ? response.slice(0, 1990) + '...' : response });
+            const embed = new EmbedBuilder()
+                .setTitle(`Résultats pour "${search}"`)
+                .setColor(0x0099ff)
+                .setDescription(results.slice(0, 5).map(pic =>
+                    `**${pic.name}**\n${pic.description}\nCoût : ${pic.cost}\nLieu : ${pic.location}`
+                ).join('\n\n'));
+            await interaction.reply({ embeds: [embed] });
         }
     }
     else if (interaction.commandName === 'zone') {
@@ -101,29 +104,42 @@ client.on('interactionCreate', async interaction => {
         if (results.length === 0) {
             await interaction.reply({ content: `Aucun picto trouvé pour la zone "${interaction.options.getString('zone')}".`, ephemeral: true });
         } else {
-            const response = results.map(pic =>
-                `**${pic.name}**\n${pic.description}\nCoût : ${pic.cost}\nLieu : ${pic.location}`
-            ).join('\n\n');
-            await interaction.reply({ content: response.length > 2000 ? response.slice(0, 1990) + '...' : response });
+            const embed = new EmbedBuilder()
+                .setTitle(`Pictos pour la zone "${interaction.options.getString('zone')}"`)
+                .setColor(0x00cc99)
+                .setDescription(results.slice(0, 10).map(pic =>
+                    `**${pic.name}**\n${pic.description}\nCoût : ${pic.cost}\nLieu : ${pic.location}`
+                ).join('\n\n'));
+            await interaction.reply({ embeds: [embed] });
         }
     }
     else if (interaction.commandName === 'totalcost') {
         const total = pictosDB.reduce((sum, pic) => sum + (parseInt(pic.cost) || 0), 0);
-        await interaction.reply(`Le coût total de tous les pictos est : ${total}`);
+        const embed = new EmbedBuilder()
+            .setTitle('Coût total des pictos')
+            .setColor(0xff9900)
+            .setDescription(`Le coût total de tous les pictos est : **${total}**`);
+        await interaction.reply({ embeds: [embed] });
     }
     else if (interaction.commandName === 'number') {
         const count = pictosDB.length;
-        await interaction.reply(`Il y a ${count} pictos au total.`);
+        const embed = new EmbedBuilder()
+            .setTitle('Nombre total de pictos')
+            .setColor(0x3366ff)
+            .setDescription(`Il y a **${count}** pictos au total.`);
+        await interaction.reply({ embeds: [embed] });
     }
 });
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isAutocomplete()) return;
     if (interaction.commandName === 'pictos') {
-        const focusedValue = interaction.options.getFocused().toLowerCase();
+        const focusedValue = removeAccents(interaction.options.getFocused().toLowerCase());
         const choices = pictosDB
             .map(pic => pic.name)
-            .filter(name => name.toLowerCase().includes(focusedValue))
+            .filter(name =>
+                removeAccents(name.toLowerCase()).includes(focusedValue)
+            )
             .slice(0, 25); // Discord limite à 25 suggestions
         await interaction.respond(
             choices.map(choice => ({ name: choice, value: choice }))
