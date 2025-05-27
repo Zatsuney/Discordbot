@@ -166,7 +166,7 @@ const pictosDB = [
     { name: "Surpuissance Améliorée", description: "+15 % à l'augmentation de dégâts conférée par Surpuissance.", cost: "10", location: "Sirène" },
     { name: "Surpuissance Immédiate", description: "Applique Surpuissance pendant 3 tours au début du combat.", cost: "10", location: "Cimetière Flottant" },
     { name: "Surpuissance Prolongée", description: "En appliquant Surpuissance, sa durée augmente de 2.", cost: "10", location: "Vieille Lumière" },
-    { name: "Surpuissance Rapide", description: "Applique également Rapidité en appliquant Surpuissance.", cost: "10", location: "L'Aspirante, Esquisse de Renoir" },
+    { name: "Surpuissance Rapide", description: "Applique également Rapidité en appliquant Surpuissance.", cost: "10", location: "Tour Eternelle" },
     { name: "Survivant", description: "Permet de survivre à une attaque fatale en conservant 1 PV. Une fois par combat.", cost: "20", location: "Gare de Monoco" },
     { name: "Teinte Accélérante", description: "Les teintes curatives confèrent également Rapidité.", cost: "5", location: "Sanctuaire de la Nuit Éternelle" },
     { name: "Teinte Chargeante", description: "+5 % de charge Gradient en utilisant un objet.", cost: "2", location: "Continent" },
