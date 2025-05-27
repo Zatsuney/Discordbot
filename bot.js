@@ -137,6 +137,31 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
+client.on('messageCreate', async message => {
+    // Ignore les bots
+    if (message.author.bot) return;
+
+    // Vérifie si l'utilisateur cible mentionne le bot
+    if (
+        message.mentions.has(client.user) &&
+        message.author.id === '680853836860227631'
+    ) {
+        // Liste de phrases passive aggressive
+        const replies = [
+            "Laisse moi dormir.",
+            "Ta cru que j'étais ton pote ?!",
+            "Laisse moi tranquille boloss !",
+            "PTDR T KI ?",
+            "Laisse moi hors de tes problèmes.",
+            "Arrête de me déranger, j'ai des choses plus importantes à faire.",
+            "Laisse moi avec tes deux neurones."
+        ];
+        // Choisit une phrase au hasard
+        const reply = replies[Math.floor(Math.random() * replies.length)];
+        await message.reply(reply);
+    }
+});
+
 async function sendPaginatedEmbeds(interaction, results, title, color) {
     const perPage = 5;
     let page = 0;
