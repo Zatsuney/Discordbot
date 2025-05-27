@@ -164,7 +164,7 @@ Spécialiste des Fractures	Dégats de Fracture aumentés de 50%, mais dégats de
 Surpuissance Améliorée	+15 % à l'augmentation de dégâts conférée par Surpuissance.	10	Sirène
 Surpuissance Immédiate	Applique Surpuissance pendant 3 tours au début du combat.	10	Cimetière Flottant
 Surpuissance Prolongée	En appliquant Surpuissance, sa durée augmente de 2.	10	Vieille Lumière
-Surpuissance Rapide	Applique également Rapidité en appliquant Surpuissance.	10	L'Aspirante, Esquisse de Renoir
+Surpuissance Rapide	Applique également Rapidité en appliquant Surpuissance.	10	Tour Eternelle
 Survivant	Permet de survivre à une attaque fatale en conservant 1 PV. Une fois par combat.	20	Gare de Monoco
 Teinte Accélérante	Les teintes curatives confèrent également Rapidité.	5	Sanctuaire de la Nuit Eternelle
 Teinte Chargeante	+5 % de charge Gradient en utilisant un objet.	2	Continent
