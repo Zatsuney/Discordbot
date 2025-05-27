@@ -79,7 +79,8 @@ client.on('interactionCreate', async interaction => {
                 .filter(name =>
                     removeAccents(name.toLowerCase()).includes(focusedValue)
                 )
-                .slice(0, 25); // Discord limite à 25 suggestions
+                .slice(0, 25) // Discord limite à 25 suggestions
+                .map(name => ({ name, value: name })); // <-- Ajoute cette ligne pour transformer en objets
             await interaction.respond(choices);
         }
         return; // On arrête ici pour ne pas traiter comme une commande normale
