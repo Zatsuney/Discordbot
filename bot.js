@@ -153,7 +153,20 @@ client.on('messageCreate', async message => {
             "PTDR T KI ?",
             "Laisse moi hors de tes problèmes.",
             "Arrête de me déranger, j'ai des choses plus importantes à faire.",
-            "Laisse moi avec tes deux neurones."
+            "Laisse moi avec tes deux neurones.",
+            "C’est fou comme tu trouves toujours le temps pour tout… sauf ce qu’on t’a demandé.",
+            "Merci pour le ping, j’me sentais vachement trop détendu.",
+            "Génial, un ping inutile de plus. Ma journée est complète.",
+            "Encore un ping de toi et je me suicide avec un virus russe.",
+            "T’as cru que j’allais répondre ? C’est mignon.",
+            "Ping encore une fois pour rien, et j’me transforme en Tamagotchi en grève.",
+            "Tu crois que j’suis Google ?",
+            "T’as essayé de réfléchir avant de m’appeler ? C’est une expérience marrante, essaye un jour.",
+            "Je suis un bot, pas ton assistant personnel...",
+            "T’as besoin d’aide ? J’peux aussi t’imprimer un cerveau si tu veux.",
+            "Encore un ping inutile et je bug ‘par accident’.",
+            "Tu me pingues comme si on avait grandi ensemble. On se connaît pas comme ça, hein.",
+            "Heureusement que j’suis un bot, sinon j’aurais des émotions. Et là j’suis sûr que j’serais déçu.",
         ];
         // Choisit une phrase au hasard
         const reply = replies[Math.floor(Math.random() * replies.length)];
