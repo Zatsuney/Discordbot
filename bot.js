@@ -141,10 +141,13 @@ client.on('messageCreate', async message => {
     if (message.author.bot) return;
 
     // Vérifie si l'utilisateur cible mentionne le bot
-    if (
-        message.mentions.has(client.user) &&
-        message.author.id === '680853836860227631'
-    ) {
+if (
+    message.mentions.has(client.user) &&
+    (
+        message.author.id === '680853836860227631' ||
+        message.author.id === '401446867084509185'
+    )
+) {
         // Liste de phrases passive aggressive
         const replies = [
             "Laisse moi dormir.",
