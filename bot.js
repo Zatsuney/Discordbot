@@ -281,4 +281,5 @@ app.listen(PORT, () => {
   console.log(`Keep-alive server running on port ${PORT}`);
 });
 
+console.log("Tentative de connexion Discord...");
 client.login(process.env.DISCORD_TOKEN);
