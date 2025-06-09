@@ -199,6 +199,13 @@ if (
     }
 });
 
+client.on('error', error => {
+    console.error('Erreur Discord client:', error);
+});
+client.on('shardError', error => {
+    console.error('Erreur de shard Discord:', error);
+});
+
 async function sendPaginatedEmbeds(interaction, results, title, color) {
     const perPage = 5;
     let page = 0;
