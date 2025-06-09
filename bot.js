@@ -65,7 +65,7 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 })();
 
 // --- Gestion des interactions ---
-client.on('ready', () => {
+client.once('ready', () => {
     console.log(`Bot connecté en tant que ${client.user.tag}`);
 });
 
