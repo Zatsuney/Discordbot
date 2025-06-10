@@ -81,7 +81,7 @@ client.on('interactionCreate', async interaction => {
                 )
                 .slice(0, 25) // Discord limite à 25 suggestions
                 .map(name => ({ name, value: name })); // <-- Ajoute cette ligne pour transformer en objets
-            await interaction.respond(choices);
+            await interaction.respond(choices.length ? choices : [{ name: "Aucun résultat", value: "" }]);
         }
         return; // On arrête ici pour ne pas traiter comme une commande normale
     }
